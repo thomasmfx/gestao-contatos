@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: agenda
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - "7771:5432"
+    volumes:
+      - agenda_data:/var/lib/postgresql/data
+    networks:
+      - internal
+  
+  migrations:
+    image: flyway/flyway:latest
+    container_name: flyway-migrations
+    env_file:
+      - ./.env
+    volumes:
+      - ./migrations:/flyway/sql
+    command: >
+      -url=jdbc:postgresql://db:5432/${POSTGRES_DB}
+      -user=${POSTGRES_USER}
+      -password=${POSTGRES_PASSWORD}
+      -connectRetries=10
+      migrate
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  backend:
+    build: ./gestao-contatos-backend
+    container_name: gestao-contatos-backend
+    restart: always
+    env_file:
+      - ./gestao-contatos-backend/.env
+    ports:
+      - "7772:8080"
+    depends_on:
+      - db
+      - migrations
+    networks:
+      - internal
+      - external
+
+  frontend:
+    build: ./gestao-contatos-frontend
+    container_name: gestao-contatos-frontend
+    restart: always
+    ports:
+      - 7773:5173
+    depends_on:
+      - backend
+    networks:
+      - external
+
+volumes:
+  agenda_data:
+
+networks:
+  internal:
+    driver: bridge 
+  external:
+    driver: bridge
