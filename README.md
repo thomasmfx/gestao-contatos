@@ -50,12 +50,20 @@ específico.
 > Certifique-se de possuir o Docker instalado, além de configurar as variáveis de ambiente do frontend e backend seguindo as instruções de seus respectivos repositórios.
 
 1. Clone o repositório em seu local de preferência e navegue até a pasta do projeto:
+
 ```bash
 git clone https://github.com/thomasmfx/gestao-contatos.git
 cd gestao-contatos
 ```
 
-2. Crie um arquivo `.env` na raíz do projeto e configure as variáveis de ambiente:
+2. Clone os repositório backend e frontend na mesma pasta:
+
+```bash
+git clone https://github.com/thomasmfx/gestao-contatos-frontend.git
+git clone https://github.com/thomasmfx/gestao-contatos-backend.git
+```
+
+3. Crie um arquivo `.env` na raíz do projeto e configure as variáveis de ambiente:
 
 ```js
 POSTGRES_USER=<user>
@@ -63,7 +71,7 @@ POSTGRES_PASSWORD=<password>
 POSTGRES_DB=<database>
 ```
 
-3. Rode o seguinte comando para inicializar o ambiente Docker:
+4. Rode o seguinte comando para inicializar o ambiente Docker:
 
 ```bash
 docker compose up -d
