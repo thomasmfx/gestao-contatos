@@ -36,6 +36,8 @@ services:
     restart: always
     env_file:
       - ./gestao-contatos-backend/.env
+    environment:
+      - DATABASE_HOST=db
     ports:
       - "7772:8080"
     depends_on:
@@ -48,6 +50,8 @@ services:
   frontend:
     build: ./gestao-contatos-frontend
     container_name: gestao-contatos-frontend
+    environment:
+      - VITE_API_URL=http://localhost:7772 
     restart: always
     ports:
       - 7773:5173
