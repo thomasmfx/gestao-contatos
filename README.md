@@ -55,6 +55,14 @@ git clone https://github.com/thomasmfx/gestao-contatos.git
 cd gestao-contatos
 ```
 
+2. Crie um arquivo `.env` na raíz do projeto e configure as variáveis de ambiente:
+
+```js
+POSTGRES_USER=<user>
+POSTGRES_PASSWORD=<password>
+POSTGRES_DB=<database>
+```
+
 3. Rode o seguinte comando para inicializar o ambiente Docker:
 
 ```bash
