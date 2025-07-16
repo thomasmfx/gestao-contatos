@@ -54,7 +54,7 @@ services:
       - VITE_API_URL=http://localhost:7772 
     restart: always
     ports:
-      - 7773:5173
+      - 7773:80
     depends_on:
       - backend
     networks:
