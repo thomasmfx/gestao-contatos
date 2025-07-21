@@ -83,6 +83,7 @@ docker compose up -d
 
 - TypeScript
 - Vue
+- Cypress
 
 ### Backend
 
