@@ -46,8 +46,6 @@ específico.
 - [x]  RN08: O sistema deve validar os dados informados antes de permitir o cadastro ou edição.
 
 ## Configuração do Ambiente
-> [!NOTE]
-> Certifique-se de possuir o Docker instalado, além de configurar as variáveis de ambiente do frontend e backend seguindo as instruções de seus respectivos repositórios.
 
 1. Clone o repositório em seu local de preferência e navegue até a pasta do projeto:
 
@@ -71,7 +69,9 @@ POSTGRES_PASSWORD=<password>
 POSTGRES_DB=<database>
 ```
 
-4. Rode o seguinte comando para inicializar o ambiente Docker:
+4. Configure as variáveis de ambiente do [backend](https://github.com/thomasmfx/gestao-contatos-backend) e do [frontend](https://github.com/thomasmfx/gestao-contatos-frontend) seguindo as instruções de seus respectivos repositórios.
+
+5. Rode o seguinte comando para inicializar o ambiente Docker:
 
 ```bash
 docker compose up -d
